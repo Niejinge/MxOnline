@@ -4,8 +4,9 @@ from django.views.generic.base import View
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 
-from .models import Course, CourseResource
-from operation.models import UserFavorite, CourseComments
+from .models import Course, CourseResource, Video
+from operation.models import UserFavorite, CourseComments, UserCourse
+from utils.mixin_utils import LoginRequiredMixin
 
 # Create your views here.
 
@@ -74,17 +75,31 @@ class CourseDetailView(View):
         })
 
 
-class CourseInfoView(View):
+class CourseInfoView(LoginRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(id=int(course_id))
+        course.students += 1
+        course.save()
+
+        user_courses = UserCourse.objects.filter(user=request.user, course=course)
+        if not user_courses:
+            user_course = UserCourse(user=request.user, course=course)
+            user_course.save()
+
+        user_cousers = UserCourse.objects.filter(course=course)
+        user_ids = [user_courser.user.id for user_courser in user_cousers]
+        all_user_courses = UserCourse.objects.filter(user_id__in=user_ids)
+        course_ids = [user_courser.course.id for user_courser in all_user_courses]
+        relate_courses = Course.objects.filter(id__in=course_ids).order_by("-click_nums")[:5]
         all_resourses = CourseResource.objects.filter(course=course)
         return render(request, "course-video.html", {
             "course": course,
             "course_resources": all_resourses,
+            "relate_courses": relate_courses,
         })
 
 
-class CommentsView(View):
+class CommentsView(LoginRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(id=int(course_id))
         all_resourses = CourseResource.objects.filter(course=course)
@@ -116,4 +131,26 @@ class AddCommentsView(View):
             return HttpResponse('{"status":"fail", "msg":"添加失败"}', content_type="application/json")
 
 
+class VideoPlayView(View):
+    def get(self, request, video_id):
+        # 视频播放页面
+        video = Video.objects.get(id=int(video_id))
+        course = video.lesson.course
+        user_courses = UserCourse.objects.filter(user=request.user, course=course)
+        if not user_courses:
+            user_course = UserCourse(user=request.user, course=course)
+            user_course.save()
+
+        user_cousers = UserCourse.objects.filter(course=course)
+        user_ids = [user_courser.user.id for user_courser in user_cousers]
+        all_user_courses = UserCourse.objects.filter(user_id__in=user_ids)
+        course_ids = [user_courser.course.id for user_courser in all_user_courses]
+        relate_courses = Course.objects.filter(id__in=course_ids).order_by("-click_nums")[:5]
+        all_resourses = CourseResource.objects.filter(course=course)
+        return render(request, "course-play.html", {
+            "course": course,
+            "course_resources": all_resourses,
+            "relate_courses": relate_courses,
+            "video": video,
+        })
 
