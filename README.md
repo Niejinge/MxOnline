@@ -1,4 +1,4 @@
-![](http://owq5oiqgs.bkt.clouddn.com/django.jpg)
+![](http://owq5oiqgs.bkt.clouddn.com/djangomodi.jpg)
 # MxOnline
 > 实战项目来自慕课网bobby老师
 

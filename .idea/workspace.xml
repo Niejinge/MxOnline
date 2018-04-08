@@ -67,8 +67,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="95">
-                <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="51" lean-forward="false" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -358,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523196264394</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modify readme">
+      <created>1523196730115</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1523196730115</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -466,7 +473,8 @@
     <MESSAGE value="remove no use ![]" />
     <MESSAGE value="add a pic" />
     <MESSAGE value="finished search func but have some problem ex can not select teacher and org" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished search func but have some problem ex can not select teacher and org" />
+    <MESSAGE value="modify readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -874,8 +882,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="95">
-            <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="51" lean-forward="false" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
             <folding />
           </first_editor>
           <second_editor />
