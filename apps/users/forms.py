@@ -3,7 +3,7 @@ __author__ = 'goldbro'
 __date__ = '2018/3/18 17:13'
 from django import forms
 from captcha.fields import CaptchaField
-
+from .models import UserProfile
 
 class LoginForm(forms.Form):
     username = forms.CharField(required=True)
@@ -25,6 +25,11 @@ class ModifyPwdForm(forms.Form):
     password1 = forms.CharField(required=True, min_length=6)
     password2 = forms.CharField(required=True, min_length=6)
 
+
+class UploadImageForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['image']
 
 
 
