@@ -4,7 +4,8 @@ __date__ = '2018/3/23 12:32'
 
 from django.conf.urls import url, include
 
-from .views import OrgView, AddUserAskView, OrgHomeView, OrgCourseView, OrgDescView, OrgTeacherView, AddFavView, TeacherListView
+from .views import OrgView, AddUserAskView, OrgHomeView, OrgCourseView, OrgDescView, OrgTeacherView, AddFavView, \
+    TeacherListView
 from .views import TeacherDetailView
 
 urlpatterns = [
