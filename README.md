@@ -1,4 +1,3 @@
-![](http://owq5oiqgs.bkt.clouddn.com/djangoxadmin.jpg)
 # MxOnline
 > 实战项目来自慕课网bobby老师
 
