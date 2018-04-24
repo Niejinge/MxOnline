@@ -5,6 +5,7 @@ import xadmin
 
 from .models import CityDict, CourseOrg, Teacher
 
+
 class CityDictAdmin(object):
     list_display = ['name', 'desc', 'add_time']
     search_fields = ['name', 'desc']
@@ -13,8 +14,10 @@ class CityDictAdmin(object):
 
 class CourseOrgAdmin(object):
     list_display = ['name', 'desc', 'click_nums', 'fav_nums', 'image', 'address', 'city', 'add_time']
-    search_fields = ['name', 'desc', 'click_nums', 'fav_nums', 'image', 'address', 'city']
+    search_fields = ['name', 'desc', 'address', 'city']
     list_filter = ['name', 'desc', 'click_nums', 'fav_nums', 'image', 'address', 'city', 'add_time']
+    # relfield_style = 'fk-ajax'
+    # 加了上面没有作用, 反而报错, 暂时没找到原因
 
 
 class TeacherAdmin(object):
