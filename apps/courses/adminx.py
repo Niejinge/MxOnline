@@ -25,9 +25,9 @@ class CourseAdmin(object):
     list_editable = ['degree', 'desc', 'name']
     exclude = ['click_nums']
     inlines = [LessonInline, CourseResourceInline]
+    style_fields = {"detail": "ueditor"}
     # 设置定时刷新
     # refresh_times = [3, 5]
-
 
     def queryset(self):
         qs = super(CourseAdmin, self).queryset()
@@ -51,6 +51,7 @@ class BannerCourseAdmin(object):
     readonly_fields = ['fav_nums']
     exclude = ['click_nums']
     inlines = [LessonInline, CourseResourceInline]
+    style_fields = {"detail": "ueditor"}
 
     def queryset(self):
         qs = super(BannerCourseAdmin, self).queryset()
