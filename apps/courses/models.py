@@ -34,6 +34,16 @@ class Course(models.Model):
         # 获取课程章节数
         return self.lesson_set.all().count()
 
+    get_zj_nums.short_description = "章节数"
+
+    def go_to(self):
+        from django.utils.safestring import mark_safe
+        return mark_safe("<a href='http://njghappy.me/'>镍铬合金</a>")
+
+    go_to.short_description = "我的博客"
+
+
+
     def get_learn_users(self):
         return self.usercourse_set.all()[:5]
 
