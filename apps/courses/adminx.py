@@ -26,6 +26,7 @@ class CourseAdmin(object):
     exclude = ['click_nums']
     inlines = [LessonInline, CourseResourceInline]
     style_fields = {"detail": "ueditor"}
+    import_excel = True
     # 设置定时刷新
     # refresh_times = [3, 5]
 
@@ -33,6 +34,7 @@ class CourseAdmin(object):
         qs = super(CourseAdmin, self).queryset()
         qs = qs.filter(is_banner=False)
         return qs
+
     def save_models(self):
         # 保存课程的时候统计课程机构的课程数
         obj = self.new_obj
@@ -41,6 +43,11 @@ class CourseAdmin(object):
             course_org = obj.course_org
             course_org.course_nums = Course.objects.filter(course_org=course_org).count()
             course_org.save()
+
+    def post(self,request,*args,**kwargs):
+        if 'excel' in request.FILES:
+            pass
+        return super(CourseAdmin, self).post(request, args,  kwargs)
 
 
 class BannerCourseAdmin(object):
